@@ -1,19 +1,20 @@
-
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Table } from 'react-bootstrap'
 
+import Modal from 'react-bootstrap/Modal';
+
+import Button from 'react-bootstrap/Button';
+
 const Formikk = () => {
     return (
       <div className="container">
-        <div className="brand-box">
-          <h1>Magic Form</h1>
-          <p>Build forms in React , without the tears </p>
-        </div>
+
   
         <div className="magic-form">
-         
-          <Formik
+
+        <Formik
             initialValues={{
               name: '',
               surname: '',
@@ -30,6 +31,7 @@ const Formikk = () => {
               console.log(values);
               setTimeout(() => {
                 setSubmitting(false);
+                alert(JSON.stringify(values, null, 2));
                 resetForm();
               }, 500);
             }}
@@ -82,7 +84,7 @@ const Formikk = () => {
                 <input
                   id="number"
                   type="text"
-                  placeholder="0543"
+                  placeholder="0543 864 2326"
                   className="input"
                   value={values.number}
                   onChange={(e)=>handleChange("number")(e.target.value)}
@@ -108,11 +110,42 @@ const Formikk = () => {
                 <button type="submit" disabled={!dirty || isSubmitting}>
                   Kaydol
                 </button>
+                
+                <Table>
+                  <thead>
+                    <tr>
+                      <th>AD</th>
+                      <th>SOYAD</th>
+                      <th>NUMARA</th>
+                      <th>ÜLKE</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{values.name}</td>
+                      <td>{values.surname}</td>
+                      <td>{values.number}</td>
+                      <td>{values.country}</td>
+                    </tr>
+                  </tbody>
+                </Table>  
+
+
+                
               </form>
               
             )}
             
           </Formik>
+        
+       
+
+
+
+
+
+
+          
           
         </div>
       </div>
