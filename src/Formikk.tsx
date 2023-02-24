@@ -10,9 +10,7 @@ import { UsersType } from './UserType';
 
 const Formikk = () => {
   const [users,setUsers]=useState<UsersType[]>()
-  function newUsers(){
-    setUsers(prevUsers => prevUsers)
-  }
+
     return (
       <div className="container">
 
@@ -56,7 +54,7 @@ const Formikk = () => {
               handleChange,
             }) => (
             
-                    <form className="magic-form" onSubmit={handleSubmit}>
+                <form className="magic-form" onSubmit={handleSubmit}>
                     <h3>Kaydol</h3>
               
                 <label htmlFor="name">İsim</label>
@@ -115,7 +113,7 @@ const Formikk = () => {
                   <div className="input-feedback">{errors.country}</div>
                 )}
   
-                <button type="submit" onClick={newUsers} disabled={!dirty || isSubmitting}>
+                <button type="submit" disabled={!dirty || isSubmitting}>
                   Kaydol
                 </button>
 
