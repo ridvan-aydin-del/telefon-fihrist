@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 import { UsersType } from './UserType';
 
 const Formikk = () => {
-  const [users,setUsers]=useState<UsersType[]>()
+  const [users,setUsers]=useState<UsersType[]>([]);
 
     return (
       <div className="container">
@@ -33,13 +33,15 @@ const Formikk = () => {
             })}
             */
             onSubmit={(values, { setSubmitting, resetForm }) => {
-              
-              console.log(values);
               setTimeout(() => {
                 setSubmitting(false);
                 /*alert(JSON.stringify(values, null, 2));*/
-                /*resetForm();*/
+                resetForm();
               }, 500);
+              return setUsers((users: UsersType[]) => [...users,values])
+
+              console.log(values);
+
             }}
           >
             
@@ -117,24 +119,7 @@ const Formikk = () => {
                   Kaydol
                 </button>
 
-                <Table>
-                  <thead>
-                    <tr>
-                      <th>AD</th>
-                      <th>SOYAD</th>
-                      <th>NUMARA</th>
-                      <th>ÜLKE</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{values.name}</td>
-                      <td>{values.surname}</td>
-                      <td>{values.number}</td>
-                      <td>{values.country}</td>
-                    </tr>
-                  </tbody>
-                </Table>  
+
 
 
                 
@@ -144,7 +129,28 @@ const Formikk = () => {
             
           </Formik>
         
-       
+          <Table>
+                  <thead>
+                    <tr>
+                      <th>AD</th>
+                      <th>SOYAD</th>
+                      <th>NUMARA</th>
+                      <th>ÜLKE</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {users?.map((x,i)=>
+                      <tr>
+                        <td>{x.name}</td>
+                        <td>{x.surname}</td>
+                        <td>{x.number}</td>
+                        <td>{x.country}</td>
+                      </tr>
+                    )}
+
+                    
+                  </tbody>
+                </Table>  
 
 
 
