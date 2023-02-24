@@ -6,8 +6,13 @@ import { Table } from 'react-bootstrap'
 import Modal from 'react-bootstrap/Modal';
 
 import Button from 'react-bootstrap/Button';
+import { UsersType } from './UserType';
 
 const Formikk = () => {
+  const [users,setUsers]=useState<UsersType[]>()
+  function newUsers(){
+    setUsers(prevUsers => prevUsers)
+  }
     return (
       <div className="container">
 
@@ -21,18 +26,21 @@ const Formikk = () => {
               number: '',
               country: ''
             }}
+            /*
             validationSchema={Yup.object({
               name: Yup.string().required('İsim boş bırakılamaz'),
               surname: Yup.string().required('Soyisim boş bırakılamaz'),
               number: Yup.string().required('Numara boş bırakılamaz'),
               country: Yup.string().required('Ülke boş bırakılamaz'),
             })}
+            */
             onSubmit={(values, { setSubmitting, resetForm }) => {
+              
               console.log(values);
               setTimeout(() => {
                 setSubmitting(false);
-                alert(JSON.stringify(values, null, 2));
-                resetForm();
+                /*alert(JSON.stringify(values, null, 2));*/
+                /*resetForm();*/
               }, 500);
             }}
           >
@@ -107,10 +115,10 @@ const Formikk = () => {
                   <div className="input-feedback">{errors.country}</div>
                 )}
   
-                <button type="submit" disabled={!dirty || isSubmitting}>
+                <button type="submit" onClick={newUsers} disabled={!dirty || isSubmitting}>
                   Kaydol
                 </button>
-                
+
                 <Table>
                   <thead>
                     <tr>
