@@ -10,7 +10,6 @@ import { UsersType } from './UserType';
 
 const Formikk = () => {
   const [users,setUsers]=useState<UsersType[]>([]);
-
     return (
       <div className="container">
 
@@ -24,14 +23,14 @@ const Formikk = () => {
               number: '',
               country: ''
             }}
-            /*
+            
             validationSchema={Yup.object({
               name: Yup.string().required('İsim boş bırakılamaz'),
               surname: Yup.string().required('Soyisim boş bırakılamaz'),
               number: Yup.string().required('Numara boş bırakılamaz'),
               country: Yup.string().required('Ülke boş bırakılamaz'),
             })}
-            */
+            
             onSubmit={(values, { setSubmitting, resetForm }) => {
               setTimeout(() => {
                 setSubmitting(false);
